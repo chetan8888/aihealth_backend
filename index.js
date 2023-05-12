@@ -7,6 +7,13 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const db = require("./config/db");
 
+// Enable CORS middleware for all origins
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 // load env vars
 dotenv.config({ path: "./config/config.env" });
 
